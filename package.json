@@ -1,0 +1,31 @@
+{
+  "name": "chatbot_yoto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JhonatanYamid/chatbot-yoto.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JhonatanYamid/chatbot-yoto/issues"
+  },
+  "homepage": "https://github.com/JhonatanYamid/chatbot-yoto#readme",
+  "dependencies": {
+    "chalk": "^5.0.1",
+    "cors": "^2.8.5",
+    "exceljs": "^4.3.0",
+    "express": "^4.17.3",
+    "mime-db": "^1.52.0",
+    "moment": "^2.29.1",
+    "ora": "^6.1.0",
+    "qrcode-terminal": "^0.12.0",
+    "whatsapp-web.js": "^1.16.4"
+  }
+}
