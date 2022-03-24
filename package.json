@@ -2,7 +2,7 @@
   "name": "chatbot_yoto",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
@@ -17,7 +17,6 @@
   "bugs": {
     "url": "https://github.com/JhonatanYamid/chatbot-yoto/issues"
   },
-  "homepage": "https://github.com/JhonatanYamid/chatbot-yoto#readme",
   "dependencies": {
     "chalk": "^5.0.1",
     "cors": "^2.8.5",
