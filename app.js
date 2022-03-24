@@ -17,6 +17,8 @@ const VERIFY_TOKEN = process.env.VERIFY_TOKEN;
 
 app.use(cors())
 app.use(express.urlencoded({ extended: true }))
+app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
+
 const sendWithApi = (req, res) => {
     const { message, to } = req.body;
     const newNumber = `${to}@c.us`
@@ -275,5 +277,3 @@ const saveHistorial = (number, message) => {
     }
 }
 (fs.existsSync(SESSION_FILE_PATH)) ? withSession() : withOutSession();
-
-app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
