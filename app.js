@@ -1,6 +1,7 @@
 require('dotenv').config()
 const { Client, LegacySessionAuth, MessageMedia } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal')
+const request = require('request');
 const fs = require('fs');
 const express = require('express')
 const ExcelJS = require('exceljs');
