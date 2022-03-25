@@ -184,7 +184,8 @@ const withSession = () => {
     sessionData = require(SESSION_FILE_PATH);
     client = new Client({
         puppeteer: {
-            args: ['--no-sandbox', '--disable-setuid-sandbox']
+            args: ['--no-sandbox', '--disable-setuid-sandbox'],
+            ignoreDefaultArgs: ['--disable-extensions']
         },
         authStrategy: new LegacySessionAuth({
             session: sessionData
