@@ -183,6 +183,9 @@ const withSession = () => {
     console.log('Validando session de whatsapp...')
     sessionData = require(SESSION_FILE_PATH);
     client = new Client({
+        puppeteer: {
+            args: ['--no-sandbox', '--disable-setuid-sandbox']
+        },
         authStrategy: new LegacySessionAuth({
             session: sessionData
         }),
