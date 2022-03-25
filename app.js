@@ -124,9 +124,9 @@ const handleMessageMessenger = (sender_psid, received_message) => {
                                 "payload": "no",
                             },
                             {
-                                "type":"web_url",
+                                "type": "web_url",
                                 "title": "Contactar",
-                                "url":"https://www.messenger.com"
+                                "url": "https://www.messenger.com"
                             }
                         ],
                     }]
@@ -184,13 +184,14 @@ const withSession = () => {
     sessionData = require(SESSION_FILE_PATH);
     client = new Client({
         puppeteer: {
-            args: ['--no-sandbox', '--disable-setuid-sandbox'],
-            ignoreDefaultArgs: ['--disable-extensions']
+            headless: true, 
+            args: ['--no-sandbox', '--disable-setuid-sandbox']
         },
         authStrategy: new LegacySessionAuth({
             session: sessionData
         }),
     })
+
     client.on('ready', () => {
         console.log('Cliente ready!');
         listenMessage();
@@ -205,6 +206,7 @@ const withOutSession = () => {
     client = new Client({
         authStrategy: new LegacySessionAuth(),
         puppeteer: {
+            headless: true,
             args: ['--no-sandbox', '--disable-setuid-sandbox']
         }
     });
