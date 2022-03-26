@@ -230,7 +230,7 @@ const listenMessage = () => {
     client.on('message', (msg) => {
         const { from, to, body } = msg;
         console.log(from, to, body);
-        sendMessage(from, 'Hola cómo vas');
+        sendMessage(from, '¡Le damos la Bienvenida al canal de experiencia al cliente vía WhatsApp de Brokers!');
         sendMedia(from, 'foto1.png')
         saveHistorial(from, body)
     })
