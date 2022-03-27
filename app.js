@@ -234,7 +234,7 @@ const listenMessage = () => {
         const defaultResponse = 
         `¡Le damos la Bienvenida al canal de experiencia al cliente vía WhatsApp de Brokers! 😃\n\nSoy su guía *BrokerBot* 🤖, disponible para ayudarle las 24 horas del día ⏰.\n¿En qué puedo ayudarle hoy ?\n\n_Elija una una opción_\n🔑 Arrendamientos wa.link/zz2ekn\n🏡 Ventas wa.link/60xvo5\n🛠️ Mantenimiento wa.link/r4m0pn\n🚚 Mudanzas wa.link/lbpkri\n🧾 Contablilidad wa.link/4lphzk\n🏗️ Construcción wa.link/r4m0pn\n💲 Financiamiento wa.link/4lphzk\n🧹 Personal de limpieza wa.link/r4m0pn\n👨🏽‍💻 Soporte técnico wa.link/nnu9rk\n⚖️ Juridica wa.link/27mwp8\n📞 Otras consultas llamanos 3004004272\n\nSiguenos para más información:\nInstagram https://bit.ly/3iCISiq\nTiktok https://bit.ly/3qF2Ldg\nFacebook https://bit.ly/3qGJUyB\nWeb: www.brokerssoluciones.com`
         sendMessage(from, defaultResponse);
-        saveHistorial(from, body)
+        // saveHistorial(from, body)
     })
 }
 const sendMessage = (to, message) => {
