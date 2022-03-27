@@ -184,7 +184,7 @@ const withSession = () => {
     sessionData = require(SESSION_FILE_PATH);
     client = new Client({
         puppeteer: {
-            headless: true, 
+            headless: true,
             args: ['--no-sandbox', '--disable-setuid-sandbox']
         },
         authStrategy: new LegacySessionAuth({
@@ -230,8 +230,10 @@ const listenMessage = () => {
     client.on('message', (msg) => {
         const { from, to, body } = msg;
         console.log(from, to, body);
-        sendMessage(from, '¡Le damos la Bienvenida al canal de experiencia al cliente vía WhatsApp de Brokers!');
-        sendMedia(from, 'foto1.png')
+        // sendMedia(from, 'logbro.png')
+        const defaultResponse = 
+        `¡Le damos la Bienvenida al canal de experiencia al cliente vía WhatsApp de Brokers! 😃\n\nSoy su guía *BrokerBot* 🤖, disponible para ayudarle las 24 horas del día ⏰.\n¿En qué puedo ayudarle hoy ?\n\n_Elija una una opción_\n🔑 Arrendamientos wa.link/zz2ekn\n🏡 Ventas wa.link/60xvo5\n🛠️ Mantenimiento wa.link/r4m0pn\n🚚 Mudanzas wa.link/lbpkri\n🧾 Contablilidad wa.link/4lphzk\n🏗️ Construcción wa.link/r4m0pn\n💲 Financiamiento wa.link/4lphzk\n🧹 Personal de limpieza wa.link/r4m0pn\n👨🏽‍💻 Soporte técnico wa.link/nnu9rk\n⚖️ Juridica wa.link/27mwp8\n📞 Otras consultas llamanos 3004004272\n\nSiguenos para más información:\nInstagram https://bit.ly/3iCISiq\nTiktok https://bit.ly/3qF2Ldg\nFacebook https://bit.ly/3qGJUyB\nWeb: www.brokerssoluciones.com`
+        sendMessage(from, defaultResponse);
         saveHistorial(from, body)
     })
 }
@@ -240,7 +242,7 @@ const sendMessage = (to, message) => {
 }
 const sendMedia = (to, file) => {
     const mediaFile = MessageMedia.fromFilePath(`./mediaSend/${file}`)
-    client.sendMessage(to, mediaFile)
+    client.sendMessage(to, mediaFile, { sendMediaAsSticker: true })
 }
 const saveHistorial = (number, message) => {
     const pathChat = `./chats/${number}.xlsx`;
