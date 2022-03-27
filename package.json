@@ -11,9 +11,6 @@
     "type": "git",
     "url": "git+https://github.com/JhonatanYamid/chatbot-yoto.git"
   },
-  "engines": {
-    "node": "16.x"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
