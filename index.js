@@ -14,9 +14,25 @@ let sessionData;
 const app = express();
 const PAGE_ACCESS_TOKEN = process.env.PAGE_ACCESS_TOKEN;
 const VERIFY_TOKEN = process.env.VERIFY_TOKEN;
+app.use(cors());
+app.use(express.urlencoded({ extended: true }));
+const qr = require('qr-image')
+const server = require('http').Server(app)
+const io = require('socket.io')(server, {
+    cors: {
+        origins: ['http://localhost:4200']
+    }
+})
+let socketEvents = {sendQR:() => {} ,sendStatus:() => {}};
+io.on('connection', (socket) => {
+    const CHANNEL = 'main-channel';
+    socket.join(CHANNEL);
+    socketEvents = require('./controllers/socket')(socket)
+    console.log('Se conecto')
+})
+app.use('/', require('./routes/web'))
+const port = process.env.PORT || 3000
 
-app.use(cors())
-app.use(express.urlencoded({ extended: true }))
 const sendWithApi = (req, res) => {
     const { message, to } = req.body;
     const newNumber = `${to}@c.us`
@@ -179,6 +195,14 @@ const callSendAPIMessenger = (sender_psid, response) => {
         }
     });
 }
+// Generate QR
+const generateImage = (base64, cb = () => {}) => {
+    let qr_svg = qr.image(base64, { type: 'svg', margin: 4 });
+    qr_svg.pipe(require('fs').createWriteStream('./mediaSend/qr-code.svg'));
+    console.log(`⚡ Recuerda que el QR se actualiza cada minuto ⚡'`);
+    console.log(`⚡ Actualiza F5 el navegador para mantener el mejor QR⚡`);
+    cb()
+}
 const withSession = () => {
     console.log('Validando session de whatsapp...')
     sessionData = require(SESSION_FILE_PATH);
@@ -195,6 +219,7 @@ const withSession = () => {
     client.on('ready', () => {
         console.log('Cliente ready!');
         listenMessage();
+        socketEvents.sendStatus()
     })
     client.on('auth_failure', () => {
         console.log('Error de autenticación');
@@ -210,9 +235,19 @@ const withOutSession = () => {
             args: ['--no-sandbox', '--disable-setuid-sandbox']
         }
     });
-    client.on('qr', qr => {
-        qrcode.generate(qr, { small: true })
-    });
+    // client.on('qr', qr => {
+    //     qrcode.generate(qr, { small: true })
+    // });
+    client.on('qr', qr => generateImage(qr, () => {
+        qrcode.generate(qr, { small: true });
+        console.log(`Ver QR http://localhost:${port}/qr`)
+        socketEvents.sendQR(qr)
+    }));
+    client.on('ready', () => {
+        console.log('Cliente ready!');
+        listenMessage();
+        socketEvents.sendStatus()
+    })
     client.on('authenticated', (session) => {
         sessionData = session;
         if (sessionData) {
@@ -236,7 +271,8 @@ const listenMessage = () => {
         console.log(from, to, body);
         // sendMedia(from, 'logbro.png')
         const defaultResponse =
-            `¡Le damos la Bienvenida al canal de experiencia al cliente vía WhatsApp de Brokers! 😃\n\nSoy su guía *BrokerBot* 🤖, disponible para ayudarle las 24 horas del día ⏰.\n¿En qué puedo ayudarle hoy ?\n\n_Elija una una opción_\n🔑 Arrendamientos wa.link/zz2ekn\n🏡 Ventas wa.link/60xvo5\n🛠️ Mantenimiento wa.link/r4m0pn\n🚚 Mudanzas wa.link/lbpkri\n🧾 Contablilidad wa.link/4lphzk\n🏗️ Construcción wa.link/r4m0pn\n💲 Financiamiento wa.link/4lphzk\n🧹 Personal de limpieza wa.link/r4m0pn\n👨🏽‍💻 Soporte técnico wa.link/nnu9rk\n⚖️ Juridica wa.link/27mwp8\n📞 Otras consultas llamanos 3004004272\n\nSiguenos para más información:\nInstagram https://bit.ly/3iCISiq\nTiktok https://bit.ly/3qF2Ldg\nFacebook https://bit.ly/3qGJUyB\nWeb: www.brokerssoluciones.com`
+            `¡Le damos la Bienvenida al canal de experiencia al cliente vía WhatsApp de Brokers! 😃\n\nSoy su guía *BrokerBot* 🤖, disponible para ayudarle las 24 horas del día ⏰.\n¿En qué puedo ayudarle hoy ?\n\n_*Elija una una opción*_\n🔑 Arrendamientos: wa.link/zz2ekn\n🏡 Ventas: wa.link/60xvo5\n🛠️ Mantenimiento: wa.link/r4m0pn\n🚚 Mudanzas: wa.link/lbpkri\n🧾 Contablilidad: wa.link/4lphzk\n🏗️ Construcción: wa.link/r4m0pn\n💲 Financiamiento: wa.link/4lphzk\n🧹 Personal de limpieza: wa.link/r4m0pn\n⚖️ Juridica: wa.link/27mwp8\n\n📞 Otras consultas llámanos:\n👨🏽‍💻 Soporte técnico: wa.link/nnu9rk\n 
+            Línea principal: 3004004272\n\nSiguenos en redes sociales:\nInstagram https://bit.ly/3iCISiq\nTiktok https://bit.ly/3qF2Ldg\nFacebook https://bit.ly/3qGJUyB\nWeb: www.brokerssoluciones.com`
         sendMessage(from, defaultResponse);
         // saveHistorial(from, body)
     })
@@ -288,4 +324,6 @@ const saveHistorial = (number, message) => {
 }
 (fs.existsSync(SESSION_FILE_PATH)) ? withSession() : withOutSession();
 
-app.listen(process.env.PORT || 9000, () => console.log('webhook is listening'));
+server.listen(port, () => {
+    console.log(`El server esta listo por el puerto ${port}`);
+})
