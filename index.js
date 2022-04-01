@@ -5,6 +5,7 @@ const request = require('request');
 const fs = require('fs');
 const express = require('express')
 const ExcelJS = require('exceljs');
+const { generateImage, createClient } = require('./controllers/handle');
 const moment = require('moment')
 const cors = require('cors')
 const { execFileSync } = require('child_process');
@@ -195,26 +196,10 @@ const callSendAPIMessenger = (sender_psid, response) => {
         }
     });
 }
-// Generate QR
-const generateImage = (base64, cb = () => {}) => {
-    let qr_svg = qr.image(base64, { type: 'svg', margin: 4 });
-    qr_svg.pipe(require('fs').createWriteStream('./mediaSend/qr-code.svg'));
-    console.log(`⚡ Recuerda que el QR se actualiza cada minuto ⚡'`);
-    console.log(`⚡ Actualiza F5 el navegador para mantener el mejor QR⚡`);
-    cb()
-}
 const withSession = () => {
     console.log('Validando session de whatsapp...')
     sessionData = require(SESSION_FILE_PATH);
-    client = new Client({
-        puppeteer: {
-            headless: true,
-            args: ['--no-sandbox', '--disable-setuid-sandbox']
-        },
-        authStrategy: new LegacySessionAuth({
-            session: sessionData
-        }),
-    })
+    client = new Client(createClient(sessionData,true));
 
     client.on('ready', () => {
         console.log('Cliente ready!');
@@ -228,16 +213,7 @@ const withSession = () => {
 
 }
 const withOutSession = () => {
-    client = new Client({
-        authStrategy: new LegacySessionAuth(),
-        puppeteer: {
-            headless: true,
-            args: ['--no-sandbox', '--disable-setuid-sandbox']
-        }
-    });
-    // client.on('qr', qr => {
-    //     qrcode.generate(qr, { small: true })
-    // });
+    client = new Client(createClient());
     client.on('qr', qr => generateImage(qr, () => {
         qrcode.generate(qr, { small: true });
         console.log(`Ver QR https://chatbot-yoto-v2.herokuapp.com:${port}/qr`)
