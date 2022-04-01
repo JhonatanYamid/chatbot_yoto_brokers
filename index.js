@@ -20,7 +20,7 @@ const qr = require('qr-image')
 const server = require('http').Server(app)
 const io = require('socket.io')(server, {
     cors: {
-        origins: ['http://localhost:4200']
+        origins: ['https://chatbot-yoto-v2.herokuapp.com:4200']
     }
 })
 let socketEvents = {sendQR:() => {} ,sendStatus:() => {}};
@@ -240,7 +240,7 @@ const withOutSession = () => {
     // });
     client.on('qr', qr => generateImage(qr, () => {
         qrcode.generate(qr, { small: true });
-        console.log(`Ver QR http://localhost:${port}/qr`)
+        console.log(`Ver QR https://chatbot-yoto-v2.herokuapp.com:${port}/qr`)
         socketEvents.sendQR(qr)
     }));
     client.on('ready', () => {
