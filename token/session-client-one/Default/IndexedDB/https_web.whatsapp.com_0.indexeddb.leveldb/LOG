@@ -1,0 +1,26 @@
+2022/04/02-00:32:23.090 5860 Reusing MANIFEST C:\Users\parch\Documents\Proyectos\chatbot_yoto\token\session-client-one\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2022/04/02-00:32:23.091 5860 Recovering log #69
+2022/04/02-00:32:23.476 5860 Reusing old log C:\Users\parch\Documents\Proyectos\chatbot_yoto\token\session-client-one\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000069.log 
+2022/04/02-00:32:23.476 5860 Delete type=2 #63
+2022/04/02-00:32:23.476 5860 Delete type=2 #64
+2022/04/02-00:32:23.476 5860 Delete type=2 #65
+2022/04/02-00:32:23.476 5860 Delete type=2 #66
+2022/04/02-00:32:23.476 5860 Delete type=2 #67
+2022/04/02-00:32:23.476 5860 Delete type=2 #70
+2022/04/02-00:32:23.762 6474 Level-0 table #78: started
+2022/04/02-00:32:23.794 6474 Level-0 table #78: 1091847 bytes OK
+2022/04/02-00:32:23.795 6474 Delete type=0 #69
+2022/04/02-00:32:33.876 50f0 Compacting 1@1 + 5@2 files
+2022/04/02-00:32:33.999 50f0 Generated table #79@1: 39883 keys, 2239666 bytes
+2022/04/02-00:32:34.039 50f0 Generated table #80@1: 6609 keys, 2151439 bytes
+2022/04/02-00:32:34.080 50f0 Generated table #81@1: 9181 keys, 2165257 bytes
+2022/04/02-00:32:34.148 50f0 Generated table #82@1: 25383 keys, 2209905 bytes
+2022/04/02-00:32:34.229 50f0 Generated table #83@1: 76657 keys, 1729739 bytes
+2022/04/02-00:32:34.229 50f0 Compacted 1@1 + 5@2 files => 10496006 bytes
+2022/04/02-00:32:34.229 50f0 compacted to: files[ 0 0 5 0 0 0 0 ]
+2022/04/02-00:32:34.229 50f0 Delete type=2 #71
+2022/04/02-00:32:34.229 50f0 Delete type=2 #72
+2022/04/02-00:32:34.229 50f0 Delete type=2 #73
+2022/04/02-00:32:34.230 50f0 Delete type=2 #74
+2022/04/02-00:32:34.230 50f0 Delete type=2 #75
+2022/04/02-00:32:34.230 50f0 Delete type=2 #78
