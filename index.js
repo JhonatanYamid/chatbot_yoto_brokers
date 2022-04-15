@@ -40,6 +40,7 @@ const sendWithApi = (req, res) => {
     sendMessage(newNumber, message)
     res.send({ status: 'enviado' })
 }
+// new deploy
 app.post('/send', sendWithApi);
 // Creates the endpoint for our webhook Messenger
 app.post('/webhook', (req, res) => {
