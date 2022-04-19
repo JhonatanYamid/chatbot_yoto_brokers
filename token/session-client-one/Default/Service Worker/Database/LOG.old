@@ -1,3 +1,2 @@
-2022/04/02-00:31:43.648 3bd0 Reusing MANIFEST C:\Users\parch\Documents\Proyectos\chatbot_yoto\token\session-client-one\Default\Service Worker\Database/MANIFEST-000001
-2022/04/02-00:31:43.649 3bd0 Recovering log #3
-2022/04/02-00:31:43.649 3bd0 Reusing old log C:\Users\parch\Documents\Proyectos\chatbot_yoto\token\session-client-one\Default\Service Worker\Database/000003.log 
+2022/04/18-23:58:15.371 3b60 Creating DB C:\Users\parch\Documents\Proyectos\chatbot_yoto_brokers\token\session-client-one\Default\Service Worker\Database since it was missing.
+2022/04/18-23:58:15.376 3b60 Reusing MANIFEST C:\Users\parch\Documents\Proyectos\chatbot_yoto_brokers\token\session-client-one\Default\Service Worker\Database/MANIFEST-000001

@@ -1,3 +1,2 @@
-2022/04/02-00:31:43.640 5904 Reusing MANIFEST C:\Users\parch\Documents\Proyectos\chatbot_yoto\token\session-client-one\Default\Platform Notifications/MANIFEST-000001
-2022/04/02-00:31:43.640 5904 Recovering log #3
-2022/04/02-00:31:43.642 5904 Reusing old log C:\Users\parch\Documents\Proyectos\chatbot_yoto\token\session-client-one\Default\Platform Notifications/000003.log 
+2022/04/18-23:59:47.746 38ec Creating DB C:\Users\parch\Documents\Proyectos\chatbot_yoto_brokers\token\session-client-one\Default\Platform Notifications since it was missing.
+2022/04/18-23:59:47.756 38ec Reusing MANIFEST C:\Users\parch\Documents\Proyectos\chatbot_yoto_brokers\token\session-client-one\Default\Platform Notifications/MANIFEST-000001

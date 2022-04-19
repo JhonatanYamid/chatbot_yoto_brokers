@@ -1,3 +1,2 @@
-2022/04/02-00:31:43.641 6f80 Reusing MANIFEST C:\Users\parch\Documents\Proyectos\chatbot_yoto\token\session-client-one\Default\Local Storage\leveldb/MANIFEST-000001
-2022/04/02-00:31:43.642 6f80 Recovering log #3
-2022/04/02-00:31:43.642 6f80 Reusing old log C:\Users\parch\Documents\Proyectos\chatbot_yoto\token\session-client-one\Default\Local Storage\leveldb/000003.log 
+2022/04/18-23:58:10.118 38ec Creating DB C:\Users\parch\Documents\Proyectos\chatbot_yoto_brokers\token\session-client-one\Default\Local Storage\leveldb since it was missing.
+2022/04/18-23:58:10.137 38ec Reusing MANIFEST C:\Users\parch\Documents\Proyectos\chatbot_yoto_brokers\token\session-client-one\Default\Local Storage\leveldb/MANIFEST-000001
